@@ -1,0 +1,5 @@
+topic_id,topic_name,questions_per_quiz,active
+t1,"דקדוק - שמות עצם",5,TRUE
+t2,"אוצר מילים - נרדפות וניגודים",5,TRUE
+t3,"חשבון - שברים",6,TRUE
+t4,"היסטוריה - תקופת המקרא",4,FALSE

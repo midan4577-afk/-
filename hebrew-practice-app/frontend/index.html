@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>תרגול לתלמידים</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1 id="app-title">תרגול לתלמידים</h1>
+    </header>
+
+    <main id="main" class="app-main">
+
+      <!-- Loading indicator, shown/hidden by app.js -->
+      <div id="loading" class="loading" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p>טוען...</p>
+      </div>
+
+      <!-- Generic error banner -->
+      <div id="error-banner" class="error-banner" role="alert" hidden></div>
+
+      <!-- Screen 1: student details -->
+      <section id="screen-student" class="screen" hidden>
+        <h2>לפני שמתחילים</h2>
+        <p class="hint">כדי לשמור את התוצאה, נא למלא שם מלא ומספר תעודת זהות.</p>
+
+        <form id="student-form" novalidate>
+          <label for="student-name">שם מלא</label>
+          <input id="student-name" name="student-name" type="text" autocomplete="name" required />
+          <p class="field-error" id="student-name-error" hidden></p>
+
+          <label for="student-id">תעודת זהות</label>
+          <input id="student-id" name="student-id" type="text" inputmode="numeric" autocomplete="off" required />
+          <p class="field-error" id="student-id-error" hidden></p>
+
+          <button type="submit" class="btn btn-primary">המשך</button>
+        </form>
+      </section>
+
+      <!-- Screen 2: topic picker -->
+      <section id="screen-topic" class="screen" hidden>
+        <h2>בחירת נושא לתרגול</h2>
+        <p class="hint" id="topic-student-hint"></p>
+        <div id="topic-list" class="topic-list"></div>
+        <p id="topic-empty" class="hint" hidden>לא נמצאו נושאים פעילים כרגע. יש לפנות למורה.</p>
+      </section>
+
+      <!-- Screen 3: quiz -->
+      <section id="screen-quiz" class="screen" hidden>
+        <div class="quiz-progress">
+          <span id="quiz-progress-text"></span>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+        </div>
+
+        <div class="question-card">
+          <h2 id="question-text"></h2>
+          <div id="options-list" class="options-list" role="radiogroup"></div>
+        </div>
+
+        <div class="quiz-nav">
+          <button id="btn-prev" type="button" class="btn btn-secondary">&#8592; הקודם</button>
+          <button id="btn-finish" type="button" class="btn btn-finish">סיום ושליחה</button>
+          <button id="btn-next" type="button" class="btn btn-primary">הבא &#8594;</button>
+        </div>
+      </section>
+
+      <!-- Screen 4: results -->
+      <section id="screen-results" class="screen" hidden>
+        <h2>התוצאה שלך</h2>
+        <div class="score-summary">
+          <div class="score-circle" id="score-circle">
+            <span id="score-percent-text">0%</span>
+          </div>
+          <ul class="score-stats">
+            <li><span class="dot dot-correct"></span> נכונות: <strong id="stat-correct"></strong></li>
+            <li><span class="dot dot-wrong"></span> שגויות: <strong id="stat-wrong"></strong></li>
+            <li><span class="dot dot-unanswered"></span> ללא מענה: <strong id="stat-unanswered"></strong></li>
+          </ul>
+        </div>
+
+        <div id="review-section">
+          <h3>שאלות לבדיקה חוזרת</h3>
+          <div id="review-list" class="review-list"></div>
+        </div>
+
+        <button id="btn-restart" type="button" class="btn btn-primary">תרגול נוסף</button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Confirmation modal for submitting with unanswered questions -->
+  <div id="confirm-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+      <h3 id="confirm-modal-title">יש שאלות ללא מענה</h3>
+      <p id="confirm-modal-text">נותרו שאלות שלא ענית עליהן. האם ברצונך לשלוח בכל זאת?</p>
+      <div class="modal-actions">
+        <button id="confirm-cancel" type="button" class="btn btn-secondary">חזרה לשאלות</button>
+        <button id="confirm-submit" type="button" class="btn btn-primary">שליחה בכל זאת</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
