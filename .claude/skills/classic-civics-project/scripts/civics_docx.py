@@ -643,7 +643,7 @@ def cmd_init(args):
                 "topic": args.topic or "",
                 "students": students,
                 "active_document": args.name,
-                "relaxation_profile": {"asked": False},
+                "note_relaxations": "המורה הורה להתעלם מהקלות הקיץ; עובדים לפי הנוסח המלא",
                 "stages": {},
                 "notes": "קובץ מצב קבוצה. אין לשמור כאן מספרי זהות או פרטי קשר.",
             },
