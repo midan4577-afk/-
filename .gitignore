@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# נתוני קבוצות תלמידים (מטלת ביצוע) – לא נשמרים ב-Git
+civics-groups/
